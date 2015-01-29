@@ -1,0 +1,25 @@
+
+ 	* {
+ 		box-sizing: border-box;
+ 	}
+	
+	p {
+		color: red;
+		color: orange;
+	}
+ 
+	.highlighted {
+		background-color: yellow;
+	}
+
+	h1{
+		margin: 0;
+		border: 0;
+		padding: 0;
+		width: auto;
+	}
+
+	#page-title {
+		background-color: purple;
+	}
+
