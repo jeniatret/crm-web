@@ -1,7 +1,7 @@
 		<h1 class="highlighted" id="page-title">All Contacts<h1>
 
 <ul>
-  <% $rolodex.contacts.each do |contact| %>
+  <% @@rolodex.contacts.each do |contact| %>
     <li><%= contact.first_name %> <%= contact.last_name %> <%= contact.email%> <%= contact.note%></li>
   <% end %>
 </ul>
