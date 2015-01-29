@@ -3,7 +3,8 @@ require_relative 'contact'
 require_relative 'rolodex'
 
 $rolodex= Rolodex.new
-
+@@rolodex = Rolodex.new
+@@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
 
 #different routs 
 get '/' do
@@ -14,6 +15,11 @@ end
 get '/contacts' do
 	erb :contacts 
 end 
+
+get "/contacts/1000" do
+  @contact = @@rolodex.find(1000)
+  erb :show_contact
+end
 
 get '/contacts/new' do
 	erb :new_contact

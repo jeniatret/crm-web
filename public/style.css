@@ -5,7 +5,7 @@
 	
 	p {
 		color: red;
-		color: orange;
+		color: blue;
 	}
  
 	.highlighted {
@@ -13,9 +13,9 @@
 	}
 
 	h1{
-		margin: 0;
-		border: 0;
-		padding: 0;
+		margin: 40px;
+		border: 50px;
+		padding: 50px;
 		width: auto;
 	}
 
