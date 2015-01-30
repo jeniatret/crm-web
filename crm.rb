@@ -1,14 +1,43 @@
-require 'sinatra'
-require_relative 'contact'
+#require_relative 'contact'
 require_relative 'rolodex'
+require 'sinatra'
+require 'data_mapper'
+
+DataMapper.setup(:default, "sqlite3:database.sqlite3")
+
+class Contact
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :first_name, String
+  property :last_name, String
+  property :email, String
+  property :note, String
+ 
+  #attr_accessor :id, :first_name, :last_name, :email, :note
+
+ #  def initialize(first_name, last_name, email, note)
+ #    @id = id
+ #    @first_name = first_name
+ #    @last_name = last_name
+ #    @email = email
+ #    @note = note
+ #  end
+	# def to_s
+	# 	"#{id}: #{first_name} #{last_name}, #{email}, #{note}"
+	# end
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
+
+#end of Datamapper setup
+
+
 
 @@rolodex = Rolodex.new
-@@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
-@@rolodex.add_contact(Contact.new("Jenia", "Tretiyakova", "zhanyat@hotmail.com", "student"))
-@@rolodex.add_contact(Contact.new("Toni", "Troka", "tonytroka@hotmail.com", "manager"))
-@@rolodex.add_contact(Contact.new("Irene", "Matsyalko", "irenematsyalko@hotmail.com", "associate"))
 
-#different routs 
+#begin sinatra routes 
 get '/' do
 	@crm_app_name = "My CRM"
 	erb :index
@@ -49,6 +78,10 @@ put "/contacts/:id" do
   else
     raise Sinatra::NotFound
   end
+end
+
+get "/search/" do
+	
 end
 
 get "/contacts/:id/edit" do
